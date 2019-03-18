@@ -1,11 +1,10 @@
-const express = require('express');
-const app = express();
-const path = require('path');
+const handler = require('serve-handler');
+const http = require('http');
+const server = http.createServer((request, response) => {
 
-app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname, 'index.html'));
-});
-
-app.listen(process.env.PORT || 4000, function(){
-    console.log('Your node js server is running');
+  return handler(request, response);
+})
+ 
+server.listen(4000, () => {
+  console.log('Running at http://localhost:4000');
 });

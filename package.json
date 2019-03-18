@@ -4,7 +4,8 @@
   "description": "\"alice-cast\"",
   "main": "server.js",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "serve": "^10.1.2"
   },
   "devDependencies": {},
   "scripts": {
