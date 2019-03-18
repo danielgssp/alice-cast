@@ -1,0 +1,23 @@
+{
+  "name": "alice-cast",
+  "version": "1.0.0",
+  "description": "\"alice-cast\"",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielgssp/alice-cast.git"
+  },
+  "author": "Daniel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danielgssp/alice-cast/issues"
+  },
+  "homepage": "https://github.com/danielgssp/alice-cast#readme"
+}
