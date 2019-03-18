@@ -5,14 +5,13 @@ function initCast(){
 
   options.customNamespaces = Object.assign({});
   options.customNamespaces[CHANNEL] = cast.framework.system.MessageType.JSON;
-
+  
   ctx.addCustomMessageListener(CHANNEL, function(customEvent) {
-    var message = customEvent.data
+    var message = JSON.stringify(customEvent.data)
     console.log("Message received from " + 
                 "[" +  customEvent.senderId +  "] " +
                 ": " + message);
     document.getElementById("main").innerHTML = message;
-    setTimeout(()=> console.log('messages do bus: ', message), 500);
   });
 
   ctx.start(options);
