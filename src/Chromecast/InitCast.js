@@ -13,12 +13,6 @@ function initCast(){
                 ": " + message);
     document.getElementById("main").innerHTML = message;
   });
-
-  //send message to send app
-  context.sendCustomMessage(CUSTOM_NS, {
-    type: 'status',
-    message: 'Playing'
-  });
-
+  
   ctx.start(options);
 };
