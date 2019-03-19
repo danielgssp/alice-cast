@@ -7,7 +7,7 @@ chromecast = () =>
   options.customNamespaces[CHANNEL] = cast.framework.system.MessageType.JSON;
 
   //receiving sender message
-  ctx.addCustomMessageListener(CHANNEL,  customEvent => console.log(customEvent.data));
+  ctx.addCustomMessageListener(CHANNEL,  customEvent => dataManager(customEvent.data));
 
   ctx.start(options);
 };
