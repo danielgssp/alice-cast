@@ -1,4 +1,4 @@
-chromecast = () =>
+function chromecast()
 {
   const CHANNEL = 'urn:x-cast:com.solinftec.alice';
   const ctx = cast.framework.CastReceiverContext.getInstance();
@@ -6,7 +6,7 @@ chromecast = () =>
   options.customNamespaces = Object.assign({});
   options.customNamespaces[CHANNEL] = cast.framework.system.MessageType.JSON;
 
-  ctx.addCustomMessageListener(CHANNEL, customEvent => console.log(customEvent.data));
+  ctx.addCustomMessageListener(CHANNEL, function (customEvent){console.log(customEvent.data)});
 
   ctx.start(options);
 };
