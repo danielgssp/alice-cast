@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="src/public/style/css.css"/>
-<script src="./src/Chromecast/ChromeCast.js"></script>
+<script src="./src/Chromecast/Chromecast.js"></script>
 <script src="./src/App.js"></script>
 <script src="http://www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js"></script>
 
@@ -10,15 +10,6 @@
 <script>
   window.onload = async () =>
   {
-    initCast();
-    // let start;
-    // const url = 'http://172.16.0.169:4212/connection/open';
-    // await fetch(url).then(r =>r.json()).then(j => 
-    // {
-    //   console.log(j);
-    //   buildDOM(j.page);
-    //   start = new Function(`return ${j.func}`)();
-    // }).catch(e => console.log(e));    
-    // start();
+    cast.framework.CastReceiverContext.getInstance().start();
   };
 </script>
