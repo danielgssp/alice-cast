@@ -1,24 +1,13 @@
-<link rel="stylesheet" href="src/public/style/css.css"/>
-<script src="./src/Chromecast/InitCast.js"></script>
-<script src="./src/App.js"></script>
-<script src="//www.gstatic.com/cast/sdk/libs/caf_receiver/v3/cast_receiver_framework.js"></script>
-
-<main id="main">
-  <h1>CAF - Receiver</h1>
-</main>
-
-<script>
-  window.onload = async () =>
-  {
-    await initCast();
-    // let start;
-    // const url = 'http://172.16.0.169:4212/connection/open';
-    // await fetch(url).then(r =>r.json()).then(j => 
-    // {
-    //   console.log(j);
-    //   buildDOM(j.page);
-    //   start = new Function(`return ${j.func}`)();
-    // }).catch(e => console.log(e));    
-    // start();
-  };
-</script>
+<html>
+<head>
+  <script type="text/javascript"
+      src="//www.gstatic.com/cast/sdk/libs/caf_receiver/v3/cast_receiver_framework.js">
+  </script>
+</head>
+<body>
+  <cast-media-player></cast-media-player>
+  <script>
+    cast.framework.CastReceiverContext.getInstance().start();
+  </script>
+</body>
+</html>
