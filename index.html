@@ -1,13 +1,37 @@
-<html>
-<head>
-  <script type="text/javascript"
-      src="//www.gstatic.com/cast/sdk/libs/caf_receiver/v3/cast_receiver_framework.js">
-  </script>
-</head>
-<body>
-  <cast-media-player></cast-media-player>
-  <script>
-    cast.framework.CastReceiverContext.getInstance().start();
-  </script>
-</body>
-</html>
+<link rel="stylesheet" href="src/public/style/css.css"/>
+<script src="./src/Chromecast/InitCast.js"></script>
+<script src="./src/App.js"></script>
+<script src="//www.gstatic.com/cast/sdk/libs/caf_receiver/v3/cast_receiver_framework.js"></script>
+
+<main id="main">
+  <h1>CAF - Receiver</h1>
+</main>
+
+<script>
+  window.onload = async () =>
+  {
+    const ctx = cast.framework.CastReceiverContext.getInstance();
+    const options = new cast.framework.CastReceiverOptions();
+    const CHANNEL = 'urn:x-cast:com.solinftec.alice';
+    
+    debugger;
+    options.customNamespaces = Object.assign({});
+    options.customNamespaces[CHANNEL] = cast.framework.system.MessageType.JSON;
+    ctx.addCustomMessageListener(CHANNEL, function(customEvent) {
+      const message = customEvent.data
+      console.log("Message received from " + "[" +  customEvent.senderId +  "] " +": " + message);
+      document.getElementById("content").innerHTML = message;
+    });
+
+    ctx.start(options);
+    // let start;
+    // const url = 'http://172.16.0.169:4212/connection/open';
+    // await fetch(url).then(r =>r.json()).then(j => 
+    // {
+    //   console.log(j);
+    //   buildDOM(j.page);
+    //   start = new Function(`return ${j.func}`)();
+    // }).catch(e => console.log(e));    
+    // start();
+  };
+</script>
