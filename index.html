@@ -10,6 +10,7 @@
 <script>
   window.onload = async () =>
   {
-    Chromecast();
+    var ctx = cast.framework.CastReceiverContext.getInstance();
+    ctx.start();
   };
 </script>
