@@ -1,4 +1,5 @@
 function Chromecast(){
+  alert('teste');
   var ctx = cast.framework.CastReceiverContext.getInstance();
   var options = new cast.framework.CastReceiverOptions();
   var CHANNEL = 'urn:x-cast:com.solinftec.alice';
