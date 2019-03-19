@@ -10,9 +10,8 @@ function initCast(){
     var message = customEvent.data
     console.log("Message received from " + 
                 "[" +  customEvent.senderId +  "] " +
-                ": " + message);
-    document.getElementById("main").innerHTML = message;
+                ": " + JSON.stringify(message));
   });
-  
+
   ctx.start(options);
 };

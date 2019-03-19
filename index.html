@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="src/public/style/css.css"/>
-<script src="./src/Chromecast/InitCast.js"></script>
+<script src="./src/Chromecast/ChromeCast.js"></script>
 <script src="./src/App.js"></script>
-<script src="//www.gstatic.com/cast/sdk/libs/caf_receiver/v3/cast_receiver_framework.js"></script>
+<script src="http://www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js"></script>
 
 <main id="main">
   <h1>CAF - Receiver</h1>
@@ -10,20 +10,7 @@
 <script>
   window.onload = async () =>
   {
-    const ctx = cast.framework.CastReceiverContext.getInstance();
-    const options = new cast.framework.CastReceiverOptions();
-    const CHANNEL = 'urn:x-cast:com.solinftec.alice';
-    
-    debugger;
-    options.customNamespaces = Object.assign({});
-    options.customNamespaces[CHANNEL] = cast.framework.system.MessageType.JSON;
-    ctx.addCustomMessageListener(CHANNEL, function(customEvent) {
-      const message = customEvent.data
-      console.log("Message received from " + "[" +  customEvent.senderId +  "] " +": " + message);
-      document.getElementById("content").innerHTML = message;
-    });
-
-    ctx.start(options);
+    initCast();
     // let start;
     // const url = 'http://172.16.0.169:4212/connection/open';
     // await fetch(url).then(r =>r.json()).then(j => 
