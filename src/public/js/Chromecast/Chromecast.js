@@ -16,6 +16,7 @@ chromecast = () =>
   ctx.addCustomMessageListener(CHANNEL,  customEvent => document.getElementById("main").innerHTML = customEvent.data.msg);
 
   //message to sender app
-  context.sendCustomMessage(CHANNEL, objToSender);
+  ctx.sendCustomMessage(CHANNEL, objToSender);
+  
   ctx.start(options);
 };
