@@ -1,22 +1,17 @@
 chromecast = () =>
 {
-  const CHANNEL = 'urn:x-cast:com.solinftec.alice';
-  const ctx = cast.framework.CastReceiverContext.getInstance();
-  const options = new cast.framework.CastReceiverOptions();
-  const objToSender = 
+  const context = cast.framework.CastReceiverContext.getInstance()
+  const CHANNEL = 'urn:x-cast:com.reactnative.googlecast.example'
+
+  context.addCustomMessageListener(CHANNEL, customEvent => 
   {
-    type: 'status',
-    message: 'Playing'
-  };
+    console.log(customEvent.data)
 
-  options.customNamespaces = Object.assign({});
-  options.customNamespaces[CHANNEL] = cast.framework.system.MessageType.JSON;
-  
-  //receiving sender message
-  ctx.addCustomMessageListener(CHANNEL,  customEvent => document.getElementById("main").innerHTML = customEvent.data.msg);
+    context.sendCustomMessage(CHANNEL, customEvent.senderId, 
+    {
+      message: 'Hello',
+    });
+  });
 
-  //message to sender app
-  ctx.sendCustomMessage(CHANNEL, objToSender);
-  
-  ctx.start(options);
+  context.start();
 };
