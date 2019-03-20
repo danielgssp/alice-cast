@@ -1,4 +1,4 @@
-## ALICE - CAST 
+<h1 align="center">ALICE - CAST </h1>
 
 #### APPLICATION RECEIVER
  This project is connection with chromecast developed by Solinfcast.
