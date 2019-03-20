@@ -6,7 +6,8 @@ chromecast = () =>
   context.addCustomMessageListener(CHANNEL, customEvent => 
   {
     console.log(customEvent.data)
-
+    document.getElementById("demo").innerHTML = customEvent.data.msg;
+    
     context.sendCustomMessage(CHANNEL, customEvent.senderId, 
     {
       message: 'Hello',
