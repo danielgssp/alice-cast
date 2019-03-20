@@ -1,9 +1,8 @@
 chromecast = () =>
 {
-  const context = cast.framework.CastReceiverContext.getInstance().setLoggerLevel(cast.framework.LoggerLevel.DEBUG);
+  const context = cast.framework.CastReceiverContext.getInstance();
   const CHANNEL = 'urn:x-cast:com.solinftec.alice';
-  
-  debugger;
+
   context.addCustomMessageListener(CHANNEL, customEvent => 
   {
     console.log(customEvent.data);
@@ -15,4 +14,5 @@ chromecast = () =>
     });
   });
 
+  context.start();
 };
