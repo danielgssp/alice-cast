@@ -9,6 +9,15 @@
  #### SDK
 ` <script src="//www.gstatic.com/cast/sdk/libs/caf_receiver/v3/cast_receiver_framework.js"></script>`
  
+ ### GETTING STARTED
+ `npm install`
+ 
+ ### RUN LOCAL
+ `npm start`
+ 
+ ### DEPLOY ON HEROKU
+ Automatic deploys, commit on project to deploy.
+ 
  #### LIFE CYCLE
  This is life cycle of application receiver (by Google)
  
