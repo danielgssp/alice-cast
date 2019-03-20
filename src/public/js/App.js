@@ -18,5 +18,3 @@ class App
         document.getElementById("main").innerHTML = data.msg;
     }
 };
-
-export default new App();
