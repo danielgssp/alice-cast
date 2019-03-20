@@ -1,3 +1,4 @@
+import App from './App';
 class Chromecast
 {
   constructor ()
