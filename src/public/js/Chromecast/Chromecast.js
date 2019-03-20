@@ -1,18 +1,16 @@
-chromecast = () =>
+class Chromecast
 {
-  const context = cast.framework.CastReceiverContext.getInstance();
-  const CHANNEL = 'urn:x-cast:com.solinftec.alice';
-
-  context.addCustomMessageListener(CHANNEL, customEvent => 
+  constructor ()
   {
-    console.log(customEvent.data);
-    document.getElementById("main").innerHTML = customEvent.data.msg;
+    this.app = new App();
+    this.context = cast.framework.CastReceiverContext.getInstance();
+    this.CHANNEL = 'urn:x-cast:com.solinftec.alice';
 
-    context.sendCustomMessage(CHANNEL, customEvent.senderId, 
+    this.context.addCustomMessageListener(this.CHANNEL, customEvent => 
     {
-      message: 'Hello'
+      this.app.managerData(customEvent.data);
     });
-  });
-
-  context.start();
+  
+    this.context.start();
+  };
 };
