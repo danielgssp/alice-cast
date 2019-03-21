@@ -8,7 +8,7 @@ class Chromecast
 
     this.context.addCustomMessageListener(this.CHANNEL, customEvent => 
     {
-      this.app.managerData(customEvent.data);
+      console.log(customEvent.data);
     });
   
     this.context.start();
