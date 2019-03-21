@@ -7,9 +7,7 @@
     "express": "^4.16.4",
     "serve": "^10.1.2"
   },
-  "devDependencies": {
-    
-  },
+  "devDependencies": {},
   "scripts": {
     "start": "serve"
   },
