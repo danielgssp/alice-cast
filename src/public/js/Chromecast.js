@@ -10,7 +10,7 @@ class Chromecast
     {
       this.app.managerData(customEvent.data);
 
-      this.context.sendCustomMessage(CHANNEL, customEvent.senderId, 
+      this.context.sendCustomMessage(this.CHANNEL, customEvent.senderId, 
       {
         message: 'Started Session'
       });
