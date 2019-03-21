@@ -15,8 +15,8 @@ class App
     //     start();
     // };
 
-    // managerData = (data) =>
-    // {
-    //     document.getElementById("main").innerHTML = data.msg;
-    // }
+    managerData = (data) =>
+    {
+        document.getElementById("main").innerHTML = data.msg;
+    }
 };
