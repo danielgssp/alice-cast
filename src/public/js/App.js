@@ -15,7 +15,7 @@ class App
     //     start();
     // };
 
-    managerData = (data) =>
+    managerData(data)
     {
         document.getElementById("main").innerHTML = data.msg;
     }
