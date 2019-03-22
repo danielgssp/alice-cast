@@ -25,7 +25,7 @@
 
     <script>
       window.onload = async () => {
-        fetch("http://127.0.0.1:4212/ws/cast/open/")
+        fetch("https://a403d90d.ngrok.io/ws/cast/open/")
           .then(r => r.json())
           .then(j => {
             let loaderElement = document.getElementById('loader');
