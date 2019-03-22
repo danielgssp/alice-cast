@@ -1,13 +1,54 @@
-<link rel="stylesheet" href="src/public/style/css.css"/>
-<script src="./src/public/js/App.js"></script>
-<script src="./src/public/js/Chromecast.js"></script>
-<script
-  type="text/javascript"
-  src="//www.gstatic.com/cast/sdk/libs/caf_receiver/v3/cast_receiver_framework.js">
-</script>
+<html>
 
-<main id="main"></main>
+<head>
+  <title>Alice</title>
 
-<script>
-  let chromecast = new Chromecast();
-</script>
+  <script src="./src/public/js/App.js"></script>
+  <script src="./src/public/js/Chromecast.js"></script>
+
+  <script type="text/javascript"
+          src="www.gstatic.com/cast/sdk/libs/caf_receiver/v3/cast_receiver_framework.js"> </script>
+
+  <!-- Alice styles -->
+  <link rel="stylesheet"
+        href="https://s3-sa-east-1.amazonaws.com/white-rabbit-api/dev/css/main.css">
+
+  <!-- General styles -->
+</head>
+
+<body>
+  <div id="main">
+    <div id="loader"></div>
+    <div id="to-change"
+         style="position: relative">
+    </div>
+
+    <script>
+      window.onload = async () => {
+        fetch("http://127.0.0.1:4212/ws/cast/open/")
+          .then(r => r.json())
+          .then(j => {
+            let loaderElement = document.getElementById('loader');
+            loaderElement.innerHTML = j.page;
+
+            initActions(j.actions);
+            // console.log(this.actions)
+
+            var initCast = new Function(j.initCast)();
+            initCast();
+          })
+      };
+
+      function initActions(actions) {
+        this.actions = actions;
+
+        Object.keys(this.actions).map(function (key, index) {
+          this.actions[key] = new Function(this.actions[key])();
+        });
+      }
+
+      let chromecast = new Chromecast();
+    </script>
+</body>
+
+</html>
