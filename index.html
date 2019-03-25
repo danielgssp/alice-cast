@@ -46,7 +46,7 @@
         console.log(customEvent.data);
 
         this.context.sendCustomMessage(this.CHANNEL, customEvent.senderId, {
-          message: 'Teste'
+          message: `Started connection for: ${customEvent.senderId}`
         });
       });
 
