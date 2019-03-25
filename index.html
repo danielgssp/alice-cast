@@ -3,51 +3,54 @@
 <head>
   <title>Alice</title>
 
-  <script src="./src/public/js/App.js"></script>
   <script src="./src/public/js/Chromecast.js"></script>
 
+  <!-- scripts -->
   <script type="text/javascript"
           src="https://www.gstatic.com/cast/sdk/libs/caf_receiver/v3/cast_receiver_framework.js"> </script>
+  <script type="text/javascript"
+          src="https://s3-sa-east-1.amazonaws.com/white-rabbit-api/dev/js/actions.js"> </script>
 
-  <!-- Alice styles -->
+  <!-- styles -->
   <link rel="stylesheet"
         href="https://s3-sa-east-1.amazonaws.com/white-rabbit-api/dev/css/main.css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:600,700,800"
+        rel="stylesheet">
 
-  <!-- General styles -->
 </head>
 
 <body>
   <div id="main">
     <div id="loader"></div>
-    <div id="to-change"
+    <div id="change-view"
          style="position: relative">
     </div>
 
     <script>
       window.onload = async () => {
-        fetch("https://a403d90d.ngrok.io/ws/cast/open/")
+        fetch("http://127.0.0.1:4212/ws/cast/open/")
           .then(r => r.json())
           .then(j => {
             let loaderElement = document.getElementById('loader');
             loaderElement.innerHTML = j.page;
-
-            initActions(j.actions);
-            // console.log(this.actions)
 
             var initCast = new Function(j.initCast)();
             initCast();
           })
       };
 
-      function initActions(actions) {
-        this.actions = actions;
+      this.context = cast.framework.CastReceiverContext.getInstance();
+      this.CHANNEL = 'urn:x-cast:com.solinftec.alice';
 
-        Object.keys(this.actions).map(function (key, index) {
-          this.actions[key] = new Function(this.actions[key])();
+      this.context.addCustomMessageListener(this.CHANNEL, customEvent => {
+        console.log(customEvent.data);
+
+        this.context.sendCustomMessage(this.CHANNEL, customEvent.senderId, {
+          message: 'Teste'
         });
-      }
+      });
 
-      let chromecast = new Chromecast();
+      this.context.start();
     </script>
 </body>
 
